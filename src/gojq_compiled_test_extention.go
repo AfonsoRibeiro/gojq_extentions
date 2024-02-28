@@ -1,4 +1,4 @@
-package gojq_extentions
+package gojq_test_extention
 
 import (
 	"fmt"
