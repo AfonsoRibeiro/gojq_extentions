@@ -1,3 +1,3 @@
-module example.com/gojq_extention
+module example.com/gojq_extentions
 
-go 1.20
+go 1.22
