@@ -1,4 +1,4 @@
 # test
 
-1. Use github.com/xboshy/linkedhashmap to limit memmory usage.
+1. Make the number of compiled regex be costumizable by the user
 2. Allow for flags somehow
