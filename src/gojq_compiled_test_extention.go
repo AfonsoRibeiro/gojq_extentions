@@ -36,7 +36,7 @@ type compiled_regex struct {
 var lhm_mf lhm.MapFunctions[string, *regexp.Regexp] = &lhm_map_functions{}
 
 var regex_map *compiled_regex = &compiled_regex{
-	regex: lhm.New(1000, lhm_mf),
+	regex: lhm.New(10000, lhm_mf),
 }
 
 /*
@@ -55,12 +55,12 @@ func (cr *compiled_regex) get(re string) (*regexp.Regexp, error) {
 	cr.rwlock.RLock()
 	cre := cr.regex.Get(re)
 	cr.rwlock.RUnlock()
-	if cre != nil {
+	if cre == nil {
 		cr.rwlock.Lock()
 		defer cr.rwlock.Unlock()
 
 		cre = cr.regex.Get(re)
-		if cre != nil {
+		if cre == nil {
 			ncre, err := compile_regexp(re)
 			if err != nil {
 				return nil, err
